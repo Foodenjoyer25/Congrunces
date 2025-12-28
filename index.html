@@ -244,15 +244,19 @@
             resultsBody.innerHTML = '';
 
             let x = 1;
-            let i = 0;
+            let i = 2;
 
             // Prevent infinite loops (safety limit)
             const maxIterations = 10000;
             let iterations = 0;
 
             do {
-                const d = Math.pow(n, x);
-                i = d % z;
+                // Use modular exponentiation to avoid overflow for large numbers
+                let d = 1;
+                for (let j = 0; j < x; j++) {
+                    d = (d * n) % z;
+                }
+                i = d;
                 
                 const row = document.createElement('tr');
                 row.innerHTML = `
