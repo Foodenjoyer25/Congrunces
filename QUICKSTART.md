@@ -35,6 +35,8 @@ This is a mathematical tool that calculates congruences for coprime numbers. It 
    git clone https://github.com/Foodenjoyer25/Congrunces.git
    cd Congrunces
    ```
+   
+   Note: The repository name is 'Congrunces' (as spelled in the URL)
 
 2. **Install dependencies**
    ```bash

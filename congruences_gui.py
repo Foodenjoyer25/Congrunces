@@ -4,7 +4,7 @@ from tkinter import ttk, scrolledtext, messagebox
 
 
 def gcd(p, q):
-    """Create the gcd of two positive integers."""
+    """Calculate the gcd of two positive integers."""
     while q != 0:
         p, q = q, p % q
     return p
@@ -95,10 +95,9 @@ class CongruencesGUI:
                 x = 1
                 results = []
                 
-                # Calculate congruences
+                # Calculate congruences using modular exponentiation
                 while i != 1:
-                    d = n ** int(x)
-                    i = int(d) % int(z)
+                    i = pow(n, x, z)  # Use modular exponentiation to avoid large numbers
                     result_line = f"{n} ** {x} [{z}] -> {i}\n"
                     results.append(result_line)
                     self.results_text.insert(tk.END, result_line)
