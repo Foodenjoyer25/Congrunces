@@ -91,24 +91,24 @@ class CongruencesGUI:
                 self.status_var.set(f"Calculating congruences for {n} and {z}...")
                 self.root.update()
                 
-                i = 2
                 x = 1
-                results = []
+                count = 0
+                i = pow(n, x, z)  # Calculate first result
                 
                 # Calculate congruences using modular exponentiation
                 while i != 1:
-                    i = pow(n, x, z)  # Use modular exponentiation to avoid large numbers
                     result_line = f"{n} ** {x} [{z}] -> {i}\n"
-                    results.append(result_line)
                     self.results_text.insert(tk.END, result_line)
+                    count += 1
                     x = x + 1
+                    i = pow(n, x, z)  # Calculate next result
                     
                     # Safety limit to prevent infinite loops
                     if x > 10000:
                         self.results_text.insert(tk.END, "\n(Calculation stopped at 10000 iterations)\n")
                         break
                 
-                self.status_var.set(f"Calculation complete. Found {len(results)} results.")
+                self.status_var.set(f"Calculation complete. Found {count} results.")
             else:
                 messagebox.showwarning("Not Coprime", 
                                       f"Numbers {n} and {z} are not coprime (GCD = {gcd(n, z)}). "
